@@ -50,7 +50,7 @@ class Announcement
     private Collection $user;
 
     #[ORM\ManyToOne(inversedBy: 'announcement')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Garage $garage = null;
 
     public function __construct()

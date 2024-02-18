@@ -25,17 +25,17 @@ class Testimony
     #[ORM\Column]
     private ?float $note = null;
 
-    #[ORM\Column]
-    private ?bool $published = null;
+    #[ORM\Column(type: 'boolean')]
+    private ?bool $published = true;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $day_published = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'testimonies')]
     private Collection $user;
 
     #[ORM\ManyToOne(inversedBy: 'testimonies')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Garage $garage = null;
 
     public function __construct()

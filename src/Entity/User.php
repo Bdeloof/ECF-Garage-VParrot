@@ -32,7 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(type: 'boolean')]
-    private $isVerified = false;
+    private $isVerified = true;
 
     #[ORM\Column(length: 255)]
     private ?string $first_name = null;

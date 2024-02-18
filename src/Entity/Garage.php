@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\GarageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\BigIntType;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GarageRepository::class)]
@@ -28,7 +29,7 @@ class Garage
     private ?string $city = null;
 
     #[ORM\Column]
-    private ?int $phone_number = null;
+    private ?string $phone_number = null;
 
     #[ORM\OneToMany(targetEntity: Service::class, mappedBy: 'garage')]
     private Collection $service;
@@ -103,12 +104,12 @@ class Garage
         return $this;
     }
 
-    public function getPhoneNumber(): ?int
+    public function getPhoneNumber(): ?string
     {
         return $this->phone_number;
     }
 
-    public function setPhoneNumber(int $phone_number): static
+    public function setPhoneNumber(string $phone_number): static
     {
         $this->phone_number = $phone_number;
 

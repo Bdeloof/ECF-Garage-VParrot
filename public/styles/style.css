@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* Stylisation du header */
+
+.logo-garage {
+    width: 100px;
+    height: 100px;
+}
+
+.header {
+    background: linear-gradient(#D92332, #FFFFFF);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-nav-bar {
+    margin-left: 10px;
+    margin-right: 10px;
+    
+}
+
+/* Stylisation page Home */
+
+.titre-principal {
+    font-size: 3em;
+    text-align: center;
+}
+
+.introduction {
+    display: flex;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-top: 20px;
+}
+
+.presentation {
+    margin-right: 30px;
+    font-size: 1.15em;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

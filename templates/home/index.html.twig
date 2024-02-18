@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<div class="example-wrapper">
+		<h1 class="titre-principal">Bienvenue au Garage Vincent Parrot !</h1>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success" role="alert">{{ message }}</div>
+		{% endfor %}
+
+		<div class="introduction">
+			<p class="presentation container">Fort d'une quinzaine d'année d'expérience dans la réparation automobile, le garage Vincent Parrot à ouvert ses portes à Toulouse en 2021. Nous nous engageons à vous offrir un service exceptionnel avec des réparations de qualités et une expérience client que vous ne trouverez pas ailleurs.
+				<br><br>Que vous ayez besoin d'une simple révision, d'une vidange ou d'une réparation de votre carrosserie, nous nous engageons à répondre à toutes vos exigences.
+				<br><br>Notre personnel compétent et amical se fera un plaisir de répondre à toutes vos questions sur les différentes réparations à amener à votre véhicule et vous tiendra informer de l'avancée de vos réparations.
+				<br><br>Vous retrouverez également tout un panel de véhicule d'occasion à la vente révisés et mis en conformité par nos soins. Pour toutes informations, n'hésitez pas à nous contacter.</p>
+			<img class="image-garagiste" src="{{ asset('images/page-home/garagiste.png') }}" alt="Garagiste au travail">
+		</div>
+
+		<h2>Ils nous ont fait confiance</h2>
+
+	</div>
+
+{% endblock %}

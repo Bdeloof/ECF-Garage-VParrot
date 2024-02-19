@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos employés{% endblock %}
+
+{% block body %}
+
+            {% for user in user %}
+				<div class="card w-50">
+					<div class="card-body">
+						{{ user.firstName }}
+						{{ user.name }}
+						{{ user.email }}
+					</div>
+				</div>
+			{% endfor %}
+
+{% endblock %}

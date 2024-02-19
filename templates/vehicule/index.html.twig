@@ -1,20 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello VehiculeController!{% endblock %}
+{% block title %}Nos véhicules{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<h2>Consulter notre catalogue de véhicules d'occasion</h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Benjamin/Documents/Code Studi/ECF Finale/garage-vparrot/src/Controller/VehiculeController.php</code></li>
-        <li>Your template at <code>C:/Users/Benjamin/Documents/Code Studi/ECF Finale/garage-vparrot/templates/vehicule/index.html.twig</code></li>
-    </ul>
+	<p>L'équipe du Garage Vincent Parrot ajoute régulièrement des véhicules d'occasion. Ils sont tous entretenus régulièrement et vérifiés par nos mécaniciens pour vous proposer les meilleurs affaires de la ville de Toulouse.</p>
+
+	<div> 
+    <button> FILTRER LA RECHERCHE </button>
+    <form>
+        <div>
+        <p>Prix max :<p>
+        <input type="range" name="Price"  min="0" max="40000" step="1000" value="20000" />
+        <label for="price"></label>
+        <output> - </output>€
+        </div>
+        
+        <div>
+        <p>Kilométrage max:</p>
+        <input type="range" name="kilometre" min="0" max="280000" step="10000" value="140000" />
+        <label for="kilometre"></label>
+        <output> - </output>km
+        </div>
+
+        <div>
+        <p>Années max :</p>
+        <input type="range" name="year" min="1997" max="2024" step="1" value="2000" />
+        <label for="year"></label>
+        <output> - </output>
+        </div>
+    </form>
 </div>
+
+            {% for announcement in announcement %}
+				<div class="card w-50">
+					<div class="card-body">
+						{{ announcement.title }}
+						{{ announcement.description }}
+						{{ announcement.technical_info }}
+                        {{ announcement.brand }}
+                        {{ announcement.price }}
+                        {{ announcement.year }}
+                        {{ announcement.kilometre }}
+						<a class="boutondetails" href="{{ path('app_contact', {'id': announcement.id}) }}" target="_blank">Demande d'informations</a>
+					</div>
+				</div>
+			{% endfor %}
+
 {% endblock %}

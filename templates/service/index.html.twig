@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos services{% endblock %}
+
+{% block body %}
+
+            {% for service in service %}
+				<div class="card w-50">
+					<div class="card-body">
+						{{ service.title }}
+						{{ service.description }}
+						{{ service.price }}
+					</div>
+				</div>
+			{% endfor %}
+
+{% endblock %}

@@ -1,3 +1,44 @@
-<footer>
+<footer style="margin-left: 0; margin-right: 0;">
+	<div class="container">
+		<section>
+			<div class="footer">
+				<div class="card">
+					<div class="card-body card-footer">
+						{% for garage in garage %}
+							<p>Nous trouver</p>
+							{{ garage.address }}
+							<br>
+							{{ garage.postalCode }}{{ garage.city }}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-body card-footer">
+						{% for garage in garage %}
+							<p>Nous contacter</p>
+							{{ garage.phoneNumber }}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-body card-footer">
+						<p>Nos horaires</p>
+						{% for schedule in schedule %}
+							{{ schedule.day }}
+							{{ schedule.openingHour }}
+							-
+							{{ schedule.closingHour }}
+							/
+							{{ schedule.openingAfternoon }}
+							-
+							{{ schedule.closingAfternoon }}
+							<br>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
 
 </footer>

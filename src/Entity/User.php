@@ -52,12 +52,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Testimony::class, mappedBy: 'user')]
     private Collection $testimonies;
 
+    #[ORM\ManyToMany(targetEntity: Contact::class, mappedBy: 'user')]
+    private Collection $contacts;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
         $this->schedules = new ArrayCollection();
         $this->announcements = new ArrayCollection();
         $this->testimonies = new ArrayCollection();
+        $this->contacts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -275,6 +279,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->testimonies->removeElement($testimony)) {
             $testimony->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contact>
+     */
+    public function getContacts(): Collection
+    {
+        return $this->contacts;
+    }
+
+    public function addContact(Contact $contact): static
+    {
+        if (!$this->contacts->contains($contact)) {
+            $this->contacts->add($contact);
+            $contact->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContact(Contact $contact): static
+    {
+        if ($this->contacts->removeElement($contact)) {
+            $contact->removeUser($this);
         }
 
         return $this;

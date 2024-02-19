@@ -17,8 +17,21 @@
 			<img class="image-garagiste" src="{{ asset('images/page-home/garagiste.png') }}" alt="Garagiste au travail">
 		</div>
 
-		<h2>Ils nous ont fait confiance</h2>
+		<div class="testimonies">
+			<h2>Ils nous ont fait confiance</h2>
 
+			{% for testimony in testimony %}
+				<div class="card w-50">
+					<div class="card-body">
+						<h3>{{ testimony.name }}</h3>
+						<h4>{{ testimony.note }}
+							/ 5</h4>
+						<p>{{ testimony.comment }}</p>
+					</div>
+				</div>
+			{% endfor %}
+
+			<button type="submit" class="btn btn-danger"><a href="{{ path('app_testimony') }}">Laissez nous vos témoignages</a></button>
+		</div>
 	</div>
-
 {% endblock %}

@@ -14,18 +14,21 @@ class TestimoniesFixtures extends Fixture
         $testimony->setName('Anne Dupont');
         $testimony->setComment('Garage très professionnel qui tient au courant de l\'avancée des réparations.');
         $testimony->setNote(5);
+        $testimony->setTestimonyOrder(1);
         $manager->persist($testimony);
 
         $testimony = new Testimony();
         $testimony->setName('Gérard Clerc');
         $testimony->setComment('Légère déception parce que j\'ai attendu longtemps pour qu\'il répare la carrosserie de ma voiture.');
         $testimony->setNote(3);
+        $testimony->setTestimonyOrder(2);
         $manager->persist($testimony);
 
         $testimony = new Testimony();
         $testimony->setName('Joseph Jacques');
         $testimony->setComment('A consulter quand vous êtes en recherche de voiture. Les véhicules proposés sont très bien entretenu. Aucun problème avec la voiture acheté chez eux.');
         $testimony->setNote(4);
+        $testimony->setTestimonyOrder(3);
         $manager->persist($testimony);
 
         $manager->flush();

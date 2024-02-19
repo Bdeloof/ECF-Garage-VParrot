@@ -27,12 +27,11 @@ class ServiceType extends AbstractType
             ])
             ->add('picture', TextType::class, [
                 'required' => false,
-                'label' => 'Image'
+                'label' => 'Image (Facultatif)'
             ])
             ->add('price', IntegerType::class, [
                 'label' => 'Prix'
             ])
-            ->add('ajouter', SubmitType::class)
         ;
     }
 

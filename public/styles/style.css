@@ -33,6 +33,16 @@ ul, ol {
     
 }
 
+/* Stylisation du Footer */
+
+.footer {
+    background: linear-gradient(#FFFFFF, #D92332);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
 /* Stylisation page Home */
 
 .titre-principal {
@@ -50,10 +60,10 @@ ul, ol {
 .presentation {
     margin-right: 30px;
     font-size: 1.15em;
-}
-
-.container {
+    text-align: justify;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }

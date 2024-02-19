@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\GarageRepository;
+use App\Repository\ScheduleRepository;
+use App\Repository\TestimonyRepository;
 use App\Form\ChangePasswordFormType;
 use App\Form\ResetPasswordRequestFormType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -35,7 +38,7 @@ class ResetPasswordController extends AbstractController
      * Display & process form to request a password reset.
      */
     #[Route('', name: 'app_forgot_password_request')]
-    public function request(Request $request, MailerInterface $mailer, TranslatorInterface $translator): Response
+    public function request(Request $request, MailerInterface $mailer, TranslatorInterface $translator, TestimonyRepository $testimonyRepository, GarageRepository $garageRepository, ScheduleRepository $scheduleRepository): Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
@@ -50,6 +53,10 @@ class ResetPasswordController extends AbstractController
 
         return $this->render('reset_password/request.html.twig', [
             'requestForm' => $form->createView(),
+            'testimony' => $testimonyRepository->findBy([],
+            ['testimonyOrder' => 'asc']), 
+            'garage' => $garageRepository->findAll(),
+            'schedule' => $scheduleRepository->findAll()
         ]);
     }
 
@@ -57,7 +64,7 @@ class ResetPasswordController extends AbstractController
      * Confirmation page after a user has requested a password reset.
      */
     #[Route('/check-email', name: 'app_check_email')]
-    public function checkEmail(): Response
+    public function checkEmail(TestimonyRepository $testimonyRepository, GarageRepository $garageRepository, ScheduleRepository $scheduleRepository): Response
     {
         // Generate a fake token if the user does not exist or someone hit this page directly.
         // This prevents exposing whether or not a user was found with the given email address or not
@@ -67,6 +74,10 @@ class ResetPasswordController extends AbstractController
 
         return $this->render('reset_password/check_email.html.twig', [
             'resetToken' => $resetToken,
+            'testimony' => $testimonyRepository->findBy([],
+            ['testimonyOrder' => 'asc']), 
+            'garage' => $garageRepository->findAll(),
+            'schedule' => $scheduleRepository->findAll()
         ]);
     }
 
@@ -74,14 +85,19 @@ class ResetPasswordController extends AbstractController
      * Validates and process the reset URL that the user clicked in their email.
      */
     #[Route('/reset/{token}', name: 'app_reset_password')]
-    public function reset(Request $request, UserPasswordHasherInterface $passwordHasher, TranslatorInterface $translator, string $token = null): Response
+    public function reset(Request $request, UserPasswordHasherInterface $passwordHasher, TranslatorInterface $translator, TestimonyRepository $testimonyRepository, GarageRepository $garageRepository, ScheduleRepository $scheduleRepository, string $token = null): Response
     {
         if ($token) {
             // We store the token in session and remove it from the URL, to avoid the URL being
             // loaded in a browser and potentially leaking the token to 3rd party JavaScript.
             $this->storeTokenInSession($token);
 
-            return $this->redirectToRoute('app_reset_password');
+            return $this->redirectToRoute('app_reset_password', [
+                'testimony' => $testimonyRepository->findBy([],
+                ['testimonyOrder' => 'asc']), 
+                'garage' => $garageRepository->findAll(),
+                'schedule' => $scheduleRepository->findAll()
+            ]);
         }
 
         $token = $this->getTokenFromSession();
@@ -98,7 +114,12 @@ class ResetPasswordController extends AbstractController
                 $translator->trans($e->getReason(), [], 'ResetPasswordBundle')
             ));
 
-            return $this->redirectToRoute('app_forgot_password_request');
+            return $this->redirectToRoute('app_forgot_password_request', [
+                'testimony' => $testimonyRepository->findBy([],
+                ['testimonyOrder' => 'asc']), 
+                'garage' => $garageRepository->findAll(),
+                'schedule' => $scheduleRepository->findAll()
+            ]);
         }
 
         // The token is valid; allow the user to change their password.
@@ -121,11 +142,20 @@ class ResetPasswordController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login', [
+                'testimony' => $testimonyRepository->findBy([],
+                ['testimonyOrder' => 'asc']), 
+                'garage' => $garageRepository->findAll(),
+                'schedule' => $scheduleRepository->findAll()
+            ]);
         }
 
         return $this->render('reset_password/reset.html.twig', [
             'resetForm' => $form->createView(),
+            'testimony' => $testimonyRepository->findBy([],
+            ['testimonyOrder' => 'asc']), 
+            'garage' => $garageRepository->findAll(),
+            'schedule' => $scheduleRepository->findAll()
         ]);
     }
 

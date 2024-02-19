@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Range;
 
 #[ORM\Entity(repositoryClass: TestimonyRepository::class)]
 class Testimony
@@ -19,10 +20,13 @@ class Testimony
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $testimonyOrder = null;
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $comment = null;
 
-    #[ORM\Column]
+    #[ORM\Column()]
     private ?float $note = null;
 
     #[ORM\Column(type: 'boolean')]
@@ -56,6 +60,18 @@ class Testimony
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getTestimonyOrder(): ?int
+    {
+        return $this->testimonyOrder;
+    }
+
+    public function setTestimonyOrder(int $testimonyOrder): self
+    {
+        $this->testimonyOrder = $testimonyOrder;
 
         return $this;
     }

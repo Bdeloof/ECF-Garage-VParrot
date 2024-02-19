@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Témoignages{% endblock %}
+
+{% block body %}
+    {{ form_start(testimonyForm) }}
+        {{ form_row(testimonyForm.name) }}
+        {{ form_row(testimonyForm.comment) }}
+        {{ form_row(testimonyForm.note) }}
+        <button type="submit" class="btn btn-danger">Envoyer votre témoignage</button>
+    {{ form_end(testimonyForm) }}
+{% endblock %}

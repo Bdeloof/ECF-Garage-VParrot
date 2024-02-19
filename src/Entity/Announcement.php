@@ -20,31 +20,31 @@ class Announcement
     private ?string $picture = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    public ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    public ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $techical_info = null;
+    public ?string $technical_info = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $brand = null;
+    public ?string $brand = null;
 
     #[ORM\Column]
-    private ?float $price = null;
+    public ?float $price = null;
 
     #[ORM\Column]
-    private ?int $year = null;
+    public ?int $year = null;
 
     #[ORM\Column]
-    private ?int $kilometre = null;
+    public ?int $kilometre = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $fuel = null;
+    public ?string $fuel = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $transmission = null;
+    public ?string $transmission = null;
 
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'announcements')]
     private Collection $user;
@@ -99,14 +99,14 @@ class Announcement
         return $this;
     }
 
-    public function getTechicalInfo(): ?string
+    public function getTechnicalInfo(): ?string
     {
-        return $this->techical_info;
+        return $this->technical_info;
     }
 
-    public function setTechicalInfo(string $techical_info): static
+    public function setTechnicalInfo(string $technical_info): static
     {
-        $this->techical_info = $techical_info;
+        $this->technical_info = $technical_info;
 
         return $this;
     }

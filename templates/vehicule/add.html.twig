@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une annonce{% endblock %}
+
+{% block body %}
+
+    {{ form(announcementForm) }}
+    <button type="submit" class="btn btn-danger">Ajouter l'annonce</button>
+
+{% endblock %}

@@ -2,11 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Garage;
 use App\Entity\Testimony;
-use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,19 +16,14 @@ class TestimonyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('comment')
-            ->add('note')
-            ->add('published')
-            ->add('day_published')
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-'choice_label' => 'id',
-'multiple' => true,
+            ->add('name', TextType::class, [
+                'label' => 'Nom'
             ])
-            ->add('garage', EntityType::class, [
-                'class' => Garage::class,
-'choice_label' => 'id',
+            ->add('comment', TextareaType::class, [
+                'label' => 'Votre témoignage'
+            ])
+            ->add('note', options:[
+                'label' => "Note entre 1 et 5"
             ])
         ;
     }

@@ -2,26 +2,31 @@
 
 namespace App\Controller;
 
-use App\Entity\Testimony;
+use App\Repository\AnnouncementRepository;
 use App\Repository\GarageRepository;
 use App\Repository\ScheduleRepository;
 use App\Repository\TestimonyRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class HomeController extends AbstractController
+class UserController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/employee', name: 'app_employee')]
     public function index(TestimonyRepository $testimonyRepository,
     GarageRepository $garageRepository,
-    ScheduleRepository $scheduleRepository): Response
+    ScheduleRepository $scheduleRepository,
+    AnnouncementRepository $announcementRepository,
+    UserRepository $userRepository): Response
     {
-        return $this->render('home/index.html.twig', [
+        return $this->render('user/index.html.twig', [
+            'user' => $userRepository->findAll(),
             'testimony' => $testimonyRepository->findBy([],
             ['testimonyOrder' => 'asc']), 
             'garage' => $garageRepository->findAll(),
-            'schedule' => $scheduleRepository->findAll()
+            'schedule' => $scheduleRepository->findAll(),
+            'announcement' => $announcementRepository->findAll()
         ]);
     }
 }

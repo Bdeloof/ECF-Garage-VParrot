@@ -13,6 +13,11 @@ ul, ol {
     list-style: none;
 }
 
+.titre-section {
+    color: #E7767F;
+    font-size: 3em;
+}
+
 /* Stylisation du header */
 
 .logo-garage {
@@ -37,9 +42,17 @@ ul, ol {
 
 .footer {
     background: linear-gradient(#FFFFFF, #D92332);
+    padding-top: 20px;
+}
+
+.footer-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.card-footer {
+    background: linear-gradient(#FFFFFF, #D92332);
 }
 
 
@@ -48,13 +61,23 @@ ul, ol {
 .titre-principal {
     font-size: 3em;
     text-align: center;
+    color: #D92332;
 }
 
 .introduction {
     display: flex;
+    flex-wrap: wrap;
     margin-left: 50px;
     margin-right: 50px;
     padding-top: 20px;
+}
+
+.image-garagiste {
+    width: 50%;
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .presentation {
@@ -66,4 +89,65 @@ ul, ol {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.card-testimony {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.card-testimony-indiv {
+    background-color: #F6C8CC;
+}
+
+
+.testimonies {
+    padding-bottom: 20px;
+}
+
+.btn-testimonies {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media screen and (min-width : 768px) {
+
+    .image-garagiste {
+        width: 50%;
+        display: block;
+        margin: auto;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+}
+
+/* Stylisation des formulaires */
+
+.mep-formulaire {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Stylisation de la page login */
+
+.titre-section {
+    text-align: center;
+}
+
+.login-bottom {
+    padding-bottom: 30px;
+}
+
+/* Stylisation de la témoignage */
+
+.btn-add-testimonies {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Stylisation de la page véhicule */
+
+.text-announcement {
+    font-size: 1.5em;
 }

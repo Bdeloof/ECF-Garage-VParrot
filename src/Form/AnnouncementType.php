@@ -15,24 +15,46 @@ class AnnouncementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('picture')
-            ->add('title')
-            ->add('description')
-            ->add('technical_info')
-            ->add('brand')
-            ->add('price')
-            ->add('year')
-            ->add('kilometre')
-            ->add('fuel')
-            ->add('transmission')
+            ->add('picture', options:[
+                'label' => 'Ajouter une image'
+            ])
+            ->add('title', options:[
+                'label' => 'Titre'
+            ])
+            ->add('description', options:[
+                'label' => 'Description'
+            ])
+            ->add('technical_info', options:[
+                'label' => 'Les informations techniques'
+            ])
+            ->add('brand', options:[
+                'label' => 'La marque'
+            ])
+            ->add('price', options:[
+                'label' => 'Prix'
+            ])
+            ->add('year', options:[
+                'label' => 'Année'
+            ])
+            ->add('kilometre', options:[
+                'label' => 'Kilomètrage'
+            ])
+            ->add('fuel', options:[
+                'label' => 'Carburant'
+            ])
+            ->add('transmission', options:[
+                'label' => 'Boite automatique ou manuel'
+            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-'choice_label' => 'id',
+'choice_label' => 'name',
 'multiple' => true,
+'label' => 'Employée'
             ])
             ->add('garage', EntityType::class, [
                 'class' => Garage::class,
-'choice_label' => 'id',
+'choice_label' => 'name',
+'label' => 'Garage'
             ])
         ;
     }

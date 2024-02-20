@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Testimony;
 use App\Repository\GarageRepository;
 use App\Repository\ScheduleRepository;
 use App\Repository\TestimonyRepository;

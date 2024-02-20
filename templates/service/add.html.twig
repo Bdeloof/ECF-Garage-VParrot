@@ -3,11 +3,18 @@
 {% block title %}Ajouter un service{% endblock %}
 
 {% block body %}
-    {{ form_start(serviceForm) }}
-        {{ form_row(serviceForm.title) }}
-        {{ form_row(serviceForm.description) }}
-        {{ form_row(serviceForm.picture) }}
-        {{ form_row(serviceForm.price) }}
-        <button type="submit" class="btn btn-danger">Ajouter un service</button>
-    {{ form_end(serviceForm) }}
+
+	<div class="mep-formulaire">
+		<h2 class="titre-section">Ajouter un service</h2>
+		<br>
+		{{ form_start(serviceForm) }}
+		{{ form_row(serviceForm.title) }}
+		{{ form_row(serviceForm.description) }}
+		{{ form_row(serviceForm.picture) }}
+		{{ form_row(serviceForm.price) }}
+		<button type="submit" class="btn btn-danger">Ajouter un service</button>
+		{{ form_end(serviceForm) }}
+		<br>
+	</div>
+
 {% endblock %}

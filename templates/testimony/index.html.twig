@@ -5,20 +5,22 @@
 {% block body %}
 
 		<div class="testimonies">
-			<h2>Ils nous ont fait confiance</h2>
-
-			{% for testimony in testimony %}
-				<div class="card w-50">
-					<div class="card-body">
-						<h3>{{ testimony.name }}</h3>
-						<h4>{{ testimony.note }}
-							/ 5</h4>
-						<p>{{ testimony.comment }}</p>
+			<h2 class="titre-section">Ils nous ont fait confiance</h2>
+			<center>
+				{% for testimony in testimony %}
+					<div class="card w-50">
+						<div class="card-body">
+							<h3>{{ testimony.name }}</h3>
+							<h4>{{ testimony.note }}
+								/ 5</h4>
+							<p>{{ testimony.comment }}</p>
+						</div>
 					</div>
-				</div>
-			{% endfor %}
-
-			<button type="submit" class="btn btn-danger"><a href="{{ path('app_testimony') }}">Laissez nous vos témoignages</a></button>
+				{% endfor %}
+			</center>
+			<br>
+			<button type="submit" class="btn btn-danger"><a class="btn-add-testimonies" href="{{ path('app_testimony') }}">Laissez nous vos témoignages</a></button>
+			<br>
 		</div>
 
 {% endblock %}

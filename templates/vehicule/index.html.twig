@@ -1,52 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos véhicules{% endblock %}
+{% block title %}Nos véhicules
+{% endblock %}
 
 {% block body %}
 
-	<h2>Consulter notre catalogue de véhicules d'occasion</h2>
-
-	<p>L'équipe du Garage Vincent Parrot ajoute régulièrement des véhicules d'occasion. Ils sont tous entretenus régulièrement et vérifiés par nos mécaniciens pour vous proposer les meilleurs affaires de la ville de Toulouse.</p>
-
-	<div> 
-    <button> FILTRER LA RECHERCHE </button>
-    <form>
-        <div>
-        <p>Prix max :<p>
-        <input type="range" name="Price"  min="0" max="40000" step="1000" value="20000" />
-        <label for="price"></label>
-        <output> - </output>€
-        </div>
-        
-        <div>
-        <p>Kilométrage max:</p>
-        <input type="range" name="kilometre" min="0" max="280000" step="10000" value="140000" />
-        <label for="kilometre"></label>
-        <output> - </output>km
-        </div>
-
-        <div>
-        <p>Années max :</p>
-        <input type="range" name="year" min="1997" max="2024" step="1" value="2000" />
-        <label for="year"></label>
-        <output> - </output>
-        </div>
-    </form>
-</div>
-
-            {% for announcement in announcement %}
+	<h2 class="titre-section">Consulter notre catalogue de véhicules d'occasion</h2>
+	<center>
+		<p class="text-announcement">L'équipe du Garage Vincent Parrot ajoute régulièrement des véhicules d'occasion. Ils sont tous entretenus régulièrement et vérifiés par nos mécaniciens pour vous proposer les meilleurs affaires de la ville de Toulouse.</p>
+		<br>
+		<button class="button-filter">
+			FILTRER LA RECHERCHE
+		</button>
+		<br>
+		<form>
+			<div>
+				<p>Prix max :</p>
+				<p>0
+					<input type="range" id="price" name="Price" min="0" max="40000" step="1000" value="20000"/>
+					<label for="price"></label>
+					<output id="priceValue">
+						- 40000
+					</output>€</p>
+			</div>
+			<div>
+				<p>Kilométrage max:</p>
+				<p>0
+				<input type="range" id="kilometre" name="kilometre" min="0" max="280000" step="10000" value="140000"/>
+				<label for="kilometre"></label>
+				<output id="kilometreValue">
+					- 280000
+				</output>km</p>
+			</div>
+			<div>
+				<p>Années max :</p>
+				<p>1997
+				<input type="range" id="year" name="year" min="1997" max="2024" step="1" value="2000"/>
+				<label for="year"></label>
+				<output id="yearValue">
+					- 2024
+				</output></p>
+			</div>
+		</form>
+		<br>
+	</center>
+	<center class="announcement-card">
+		{% for announcement in announcement %}
+			<article class="announcement-detail">
 				<div class="card w-50">
 					<div class="card-body">
-						{{ announcement.title }}
-						{{ announcement.description }}
-						{{ announcement.technical_info }}
-                        {{ announcement.brand }}
-                        {{ announcement.price }}
-                        {{ announcement.year }}
-                        {{ announcement.kilometre }}
+						<div class="container text-center">
+							<div class="row">
+
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">Titre</th>
+											<th scope="col">Description</th>
+											<th scope="col">Infos Techniques</th>
+											<th scope="col">Marque</th>
+											<th scope="col">Prix</th>
+											<th scope="col">Année</th>
+											<th scope="col">kilométrage</th>
+
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row"></th>
+											<td>{{ announcement.getTitle }}</td>
+											<td>{{ announcement.getDescription }}</td>
+											<td>{{ announcement.getTechnicalInfo }}</td>
+											<td>{{ announcement.getBrand }}</td>
+											<td>{{ announcement.getPrice }}€</td>
+											<td>{{ announcement.getYear }}</td>
+											<td>{{ announcement.getKilometre }}km</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 						<a class="boutondetails" href="{{ path('app_contact', {'id': announcement.id}) }}" target="_blank">Demande d'informations</a>
 					</div>
 				</div>
-			{% endfor %}
+			</article>
+		{% endfor %}
+		<br>
+	</center>
+	<script src="{{ asset('javascript/script.js') }}"></script>
 
 {% endblock %}

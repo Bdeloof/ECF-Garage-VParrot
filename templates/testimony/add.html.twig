@@ -3,10 +3,18 @@
 {% block title %}Témoignages{% endblock %}
 
 {% block body %}
-    {{ form_start(testimonyForm) }}
-        {{ form_row(testimonyForm.name) }}
-        {{ form_row(testimonyForm.comment) }}
-        {{ form_row(testimonyForm.note) }}
-        <button type="submit" class="btn btn-danger">Envoyer votre témoignage</button>
-    {{ form_end(testimonyForm) }}
+
+    <div class="mep-formulaire">
+        <h2 class="titre-section">Donnez votre avis</h2>
+        <br>
+        <p>Vous êtes totalement satisfait de la prestation que vous avez eu ? Ou au contraire, vous n'êtes pas content du travail effectué sur votre véhicule ? N'hésitez pas à nous le dire et partagez votre expérience avec nos visiteurs</p>
+            {{ form_start(testimonyForm) }}
+                {{ form_row(testimonyForm.name) }}
+                {{ form_row(testimonyForm.comment) }}
+                {{ form_row(testimonyForm.note) }}
+                <button type="submit" class="btn btn-danger">Envoyer votre témoignage</button>
+            {{ form_end(testimonyForm) }}
+            <br>
+    </div>
+
 {% endblock %}

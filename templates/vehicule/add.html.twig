@@ -4,7 +4,26 @@
 
 {% block body %}
 
-    {{ form(announcementForm) }}
-    <button type="submit" class="btn btn-danger">Ajouter l'annonce</button>
+	<div class="mep-formulaire">
+		<h2 class="titre-section">Ajouter une annonce</h2>
+		<br>
+		{{ form_start(announcementForm) }}
+		{{ form_row(announcementForm.picture) }}
+		{{ form_row(announcementForm.title) }}
+		{{ form_row(announcementForm.description) }}
+		{{ form_row(announcementForm.technical_info) }}
+		{{ form_row(announcementForm.brand) }}
+		{{ form_row(announcementForm.price) }}
+		{{ form_row(announcementForm.year) }}
+		{{ form_row(announcementForm.kilometre) }}
+		{{ form_row(announcementForm.fuel) }}
+		{{ form_row(announcementForm.transmission) }}
+		{{ form_row(announcementForm.user) }}
+		{{ form_row(announcementForm.garage) }}
+
+		<button type="submit" class="btn btn-danger">Ajouter l'annonce</button>
+		{{ form_end(announcementForm) }}
+		<br>
+	</div>
 
 {% endblock %}

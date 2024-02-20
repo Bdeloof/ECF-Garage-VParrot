@@ -10,28 +10,37 @@
 		{% endfor %}
 
 		<div class="introduction">
-			<p class="presentation container">Fort d'une quinzaine d'année d'expérience dans la réparation automobile, le garage Vincent Parrot à ouvert ses portes à Toulouse en 2021. Nous nous engageons à vous offrir un service exceptionnel avec des réparations de qualités et une expérience client que vous ne trouverez pas ailleurs.
+			<img class="image-garagiste" src="{{ asset('images/page-home/garagiste.png') }}" alt="Garagiste au travail">
+			<div>
+				<center>
+				<p class="presentation container">Fort d'une quinzaine d'année d'expérience dans la réparation automobile, le garage Vincent Parrot à ouvert ses portes à Toulouse en 2021. Nous nous engageons à vous offrir un service exceptionnel avec des réparations de qualités et une expérience client que vous ne trouverez pas ailleurs.
 				<br><br>Que vous ayez besoin d'une simple révision, d'une vidange ou d'une réparation de votre carrosserie, nous nous engageons à répondre à toutes vos exigences.
 				<br><br>Notre personnel compétent et amical se fera un plaisir de répondre à toutes vos questions sur les différentes réparations à amener à votre véhicule et vous tiendra informer de l'avancée de vos réparations.
 				<br><br>Vous retrouverez également tout un panel de véhicule d'occasion à la vente révisés et mis en conformité par nos soins. Pour toutes informations, n'hésitez pas à nous contacter.</p>
-			<img class="image-garagiste" src="{{ asset('images/page-home/garagiste.png') }}" alt="Garagiste au travail">
+				</center>
+			</div>
 		</div>
 
-		<div class="testimonies">
-			<h2>Ils nous ont fait confiance</h2>
-
-			{% for testimony in testimony %}
-				<div class="card w-50">
-					<div class="card-body">
-						<h3>{{ testimony.name }}</h3>
-						<h4>{{ testimony.note }}
-							/ 5</h4>
-						<p>{{ testimony.comment }}</p>
-					</div>
+		<center>
+			<div class="testimonies">
+				<h2 class="titre-section">Ils nous ont fait confiance</h2>
+				<div class="card-testimony">
+					{% for testimony in testimony %}
+						<div class="card w-50">
+							<div class="card-body card-testimony-indiv">
+								<h3>{{ testimony.name }}</h3>
+								<h4>{{ testimony.note }}
+									/ 5</h4>
+								<p>{{ testimony.comment }}</p>
+							</div>
+						</div>
+					{% endfor %}
 				</div>
-			{% endfor %}
 
-			<button type="submit" class="btn btn-danger"><a href="{{ path('app_testimony') }}">Laissez nous vos témoignages</a></button>
-		</div>
+				<button type="submit" class="btn btn-danger">
+					<a href="{{ path('app_add_testimony') }}" class="btn-testimonies">Laissez nous vos témoignages</a>
+				</button>
+			</div>
+		</center>
 	</div>
 {% endblock %}

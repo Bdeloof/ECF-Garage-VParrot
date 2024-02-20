@@ -1,17 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos employés{% endblock %}
+{% block title %}Nos employés
+{% endblock %}
 
 {% block body %}
 
-            {% for user in user %}
-				<div class="card w-50">
-					<div class="card-body">
-						{{ user.firstName }}
-						{{ user.name }}
-						{{ user.email }}
-					</div>
-				</div>
-			{% endfor %}
+	<br>
+	<center>
+		<h2 class="titre-section">Liste des employés du garage</h2>
+		<br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">Prénom</th>
+					<th scope="col">Nom</th>
+					<th scope="col">Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in user %}
+				<tr>
+					<th scope="row"></th>
+					<td>{{ user.firstName }}</td>
+					<td>{{ user.name }}</td>
+					<td>{{ user.email }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</center>
+	<br>
 
 {% endblock %}

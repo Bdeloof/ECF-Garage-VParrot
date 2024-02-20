@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un horaire{% endblock %}
+
+{% block body %}
+
+    <br>
+	<div class="mep-formulaire">
+		<h2 class="titre-section">Ajouter un horaire</h2>
+		<br>
+		{{ form_start(scheduleForm) }}
+		{{ form_row(scheduleForm.day) }}
+		{{ form_row(scheduleForm.opening_hour) }}
+		{{ form_row(scheduleForm.closing_hour) }}
+		{{ form_row(scheduleForm.opening_afternoon) }}
+		{{ form_row(scheduleForm.closing_afternoon) }}
+        {{ form_row(scheduleForm.user) }}
+        {{ form_row(scheduleForm.garage) }}
+		<button type="submit" class="btn btn-danger">Ajouter un service</button>
+		{{ form_end(scheduleForm) }}
+		<br>
+	</div>
+
+{% endblock %}

@@ -32,6 +32,7 @@ class UserFixtures extends Fixture
         $employee->setPassword(
             $this->passwordEncoder->hashPassword($employee, 'Antoine9Dupont')
         );
+        $admin->setRoles(['ROLE_ADMIN']);
         $manager->persist($employee);
 
         $employee = new User();
@@ -41,6 +42,7 @@ class UserFixtures extends Fixture
         $employee->setPassword(
             $this->passwordEncoder->hashPassword($employee, 'Kylian7Mbappe')
         );
+        $admin->setRoles(['ROLE_ADMIN']);
         $manager->persist($employee);
 
         $employee = new User();
@@ -50,6 +52,7 @@ class UserFixtures extends Fixture
         $employee->setPassword(
             $this->passwordEncoder->hashPassword($employee, 'Teddy11Riner')
         );
+        $admin->setRoles(['ROLE_ADMIN']);
         $manager->persist($employee);
 
         $manager->flush();

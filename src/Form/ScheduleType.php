@@ -15,18 +15,29 @@ class ScheduleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('day')
-            ->add('opening_hour')
-            ->add('closing_hour')
-            ->add('opening_afternoon')
-            ->add('closing_afternoon')
+            ->add('day', options:[
+                'label' => "Jour"
+            ])
+            ->add('opening_hour', options:[
+                'label' => "Ouverture le matin"
+            ])
+            ->add('closing_hour', options:[
+                'label' => "Fermeture le midi"
+            ])
+            ->add('opening_afternoon', options:[
+                'label' => "Ouverture le midi"
+            ])
+            ->add('closing_afternoon', options:[
+                'label' => "Fermeture le soir"
+            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-'choice_label' => 'id',
+'choice_label' => 'name',
+'label' => "Nom"
             ])
             ->add('garage', EntityType::class, [
                 'class' => Garage::class,
-'choice_label' => 'id',
+'choice_label' => 'name',
             ])
         ;
     }

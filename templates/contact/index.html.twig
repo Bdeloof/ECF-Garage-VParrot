@@ -1,15 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contactez nous !{% endblock %}
+{% block title %}Contactez nous !
+{% endblock %}
 
 {% block body %}
 
-    {{ form_start(contactForm) }}
-        {{ form_row(contactForm.name) }}
-        {{ form_row(contactForm.phone_number) }}
-        {{ form_row(contactForm.email) }}
-        {{ form_row(contactForm.question) }}
-        <button type="submit" class="btn btn-danger">Envoyez votre question</button>
-    {{ form_end(contactForm) }}
+	<br>
+	<div class="mep-formulaire">
+		<h2 class="titre-section">Contactez nous</h2>
+		<br>
+		<p>Vous désirez savoir où en sont vos réparations ? Vous avez une question en rapport avec votre véhicule ? Vous avez besoin d'informations en rapport avec un de nos véhicules avant de l'acquérir ? N'hésitez surtout pas et envoyez nous un message en remplissant le formulaire ci-dessous. Nous vous répondrons dans les plus bref délais.</p>
+		{{ form_start(contactForm) }}
+		{{ form_row(contactForm.name) }}
+		{{ form_row(contactForm.phone_number) }}
+		{{ form_row(contactForm.email) }}
+		{{ form_row(contactForm.question) }}
+		<button type="submit" class="btn btn-danger">Envoyez votre question</button>
+		{{ form_end(contactForm) }}
+
+		<br>
+	</div>
 
 {% endblock %}

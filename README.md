@@ -8,7 +8,7 @@ Dans ce README, vous pourrez trouver les différents identifiants pour vous conn
 
 Lien vers le site en ligne : 
 
-Lien vers le dépôt github du projet :
+Lien vers le dépôt github du projet : https://github.com/Bdeloof/ECF-Garage-VParrot
 
 
 Vous pourrez trouver les documents suivants dans le dossier <b>Documents</b> :
